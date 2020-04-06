@@ -1,5 +1,6 @@
 package application;
 
+import models.Matrix;
 import models.Neuron;
 import models.ReadData;
 
@@ -29,6 +30,19 @@ public class Application {
 
         //teste
         System.out.println(input.toString());
+
+        Matrix m = new Matrix(2,2);
+        m.printMatrix();
+
+        System.out.println("---------------------");
+
+        Matrix.addScalar(m, 1);
+        m.printMatrix();
+
+        System.out.println("---------------------");
+
+        Matrix.multiplyScalar(m, 2);
+        m.printMatrix();
     }
 
 }
