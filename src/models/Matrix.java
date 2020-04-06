@@ -8,6 +8,8 @@ public class Matrix {
     private int cols;
     private double[][] matrix;
 
+    public Matrix() {}
+
     public Matrix(int rows, int cols) {
         this.rows = rows;
         this.cols = cols;
@@ -34,7 +36,7 @@ public class Matrix {
     public void randomize() {
         for(int i = 0; i < this.rows; i++) {
             for(int j = 0; j < this.cols; j++) {
-                this.matrix[i][j] = Math.random()*10;
+                this.matrix[i][j] = Math.round(Math.random()*10);
             }
         }
     }
@@ -49,6 +51,18 @@ public class Matrix {
 
     }
 
+    public static void addMatrix(Matrix m, Matrix n) {
+
+        if(m.getRows() == n.getRows() && m.getCols() == n.getCols()) {
+            for(int i = 0; i < m.getRows(); i++) {
+                for(int j = 0; j < m.getCols(); j++) {
+                    m.matrix[i][j] += n.matrix[i][j];
+                }
+            }
+        }
+
+    }
+
     public static void multiplyScalar(Matrix m, double n) {
 
         for(int i = 0; i < m.getRows(); i++) {
@@ -57,6 +71,27 @@ public class Matrix {
             }
         }
 
+    }
+
+    public static Matrix multiplyMatrix(Matrix m, Matrix n) {
+
+        Matrix result = new Matrix();
+
+        if(m.getCols() == n.getRows()) {
+            result = new Matrix(m.getRows(), n.getCols());
+
+            for(int i = 0; i < result.getRows(); i++) {
+                for(int j = 0; j < result.getCols(); j++) {
+                    double sum = 0;
+                    for(int k = 0; k < m.getCols(); k++) {
+                        sum += m.matrix[i][k] * n.matrix[k][j];
+                    }
+                    result.matrix[i][j] = sum;
+                }
+            }
+        }
+
+        return result;
     }
 
     public void printMatrix() {

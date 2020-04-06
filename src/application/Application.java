@@ -31,18 +31,36 @@ public class Application {
         //teste
         System.out.println(input.toString());
 
-        Matrix m = new Matrix(2,2);
+        Matrix m = new Matrix(2,3);
         m.printMatrix();
 
         System.out.println("---------------------");
 
-        //Matrix.addScalar(m, 1);
-        //m.printMatrix();
+        /*Matrix.addScalar(m, 1);
+        m.printMatrix();
 
         System.out.println("---------------------");
 
-        //Matrix.multiplyScalar(m, 2);
-        //m.printMatrix();
+        Matrix.multiplyScalar(m, 2);
+        m.printMatrix();
+
+        System.out.println("---------------------");*/
+
+        Matrix n = new Matrix(3,2);
+        n.printMatrix();
+
+        System.out.println("---------------------");
+
+        Matrix.addMatrix(m, n);
+        m.printMatrix();
+        n.printMatrix();
+
+        System.out.println("---------------------");
+
+        Matrix c = Matrix.multiplyMatrix(m, n);
+        c.printMatrix();
+
+
     }
 
 }
