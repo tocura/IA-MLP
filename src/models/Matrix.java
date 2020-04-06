@@ -1,5 +1,7 @@
 package models;
 
+import java.text.DecimalFormat;
+
 public class Matrix {
 
     private int rows;
@@ -10,7 +12,7 @@ public class Matrix {
         this.rows = rows;
         this.cols = cols;
         this.matrix = new double[rows][cols];
-        initMatrix();
+        randomize();
     }
 
     public int getRows() {
@@ -29,10 +31,10 @@ public class Matrix {
         this.cols = cols;
     }
 
-    public void initMatrix() {
+    public void randomize() {
         for(int i = 0; i < this.rows; i++) {
             for(int j = 0; j < this.cols; j++) {
-                this.matrix[i][j] = 0;
+                this.matrix[i][j] = Math.random()*10;
             }
         }
     }

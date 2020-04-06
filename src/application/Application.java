@@ -36,13 +36,13 @@ public class Application {
 
         System.out.println("---------------------");
 
-        Matrix.addScalar(m, 1);
-        m.printMatrix();
+        //Matrix.addScalar(m, 1);
+        //m.printMatrix();
 
         System.out.println("---------------------");
 
-        Matrix.multiplyScalar(m, 2);
-        m.printMatrix();
+        //Matrix.multiplyScalar(m, 2);
+        //m.printMatrix();
     }
 
 }
