@@ -33,6 +33,14 @@ public class Matrix {
         this.cols = cols;
     }
 
+    public double getValueMatrix(int row, int col) {
+        return this.matrix[row][col];
+    }
+
+    public void setValueMatrix(double value, int row, int col) {
+        this.matrix[row][col] = value;
+    }
+
     public void randomize() {
         for(int i = 0; i < this.rows; i++) {
             for(int j = 0; j < this.cols; j++) {
@@ -45,7 +53,8 @@ public class Matrix {
 
         for(int i = 0; i < m.getRows(); i++) {
             for(int j = 0; j < m.getCols(); j++) {
-                m.matrix[i][j] += n;
+                double sum = m.getValueMatrix(i,j) + n;
+                m.setValueMatrix(sum, i, j);
             }
         }
 
@@ -56,7 +65,8 @@ public class Matrix {
         if(m.getRows() == n.getRows() && m.getCols() == n.getCols()) {
             for(int i = 0; i < m.getRows(); i++) {
                 for(int j = 0; j < m.getCols(); j++) {
-                    m.matrix[i][j] += n.matrix[i][j];
+                    double sum = m.getValueMatrix(i,j) * n.getValueMatrix(i,j);
+                    m.setValueMatrix(sum, i, j);
                 }
             }
         }
@@ -67,7 +77,8 @@ public class Matrix {
 
         for(int i = 0; i < m.getRows(); i++) {
             for(int j = 0; j < m.getCols(); j++) {
-                m.matrix[i][j] *= n;
+                double prod = m.getValueMatrix(i,j) * n;
+                m.setValueMatrix(prod, i, j);
             }
         }
 
@@ -84,9 +95,9 @@ public class Matrix {
                 for(int j = 0; j < result.getCols(); j++) {
                     double sum = 0;
                     for(int k = 0; k < m.getCols(); k++) {
-                        sum += m.matrix[i][k] * n.matrix[k][j];
+                        sum += m.getValueMatrix(i,k) * n.getValueMatrix(k,j);
                     }
-                    result.matrix[i][j] = sum;
+                    result.setValueMatrix(sum,i,j);
                 }
             }
         }

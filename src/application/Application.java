@@ -36,7 +36,7 @@ public class Application {
 
         System.out.println("---------------------");
 
-        /*Matrix.addScalar(m, 1);
+        Matrix.addScalar(m, 1);
         m.printMatrix();
 
         System.out.println("---------------------");
@@ -44,7 +44,7 @@ public class Application {
         Matrix.multiplyScalar(m, 2);
         m.printMatrix();
 
-        System.out.println("---------------------");*/
+        System.out.println("---------------------");
 
         Matrix n = new Matrix(3,2);
         n.printMatrix();
