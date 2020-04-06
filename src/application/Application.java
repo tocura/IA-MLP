@@ -1,10 +1,9 @@
 package application;
 
-import models.InputNeuron;
+import models.Neuron;
 import models.ReadData;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -26,7 +25,7 @@ public class Application {
         ReadData read = new ReadData();
 
         //lista de neuronios de entrada
-        List<InputNeuron> input = read.readDataFile(fileName);
+        List<Neuron> input = read.readDataFile(fileName);
 
         //teste
         System.out.println(input.toString());

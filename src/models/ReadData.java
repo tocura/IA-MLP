@@ -15,11 +15,11 @@ public class ReadData {
     /*
     Metodo para ler os dados dos arquivos de entrada
      */
-    public List<InputNeuron> readDataFile(String fileName) throws IOException {
+    public List<Neuron> readDataFile(String fileName) throws IOException {
 
         String line = "";
 
-        List<InputNeuron> list = new ArrayList<>();
+        List<Neuron> list = new ArrayList<>();
 
         BufferedReader reader = new BufferedReader(new FileReader(path + fileName));
 
@@ -60,7 +60,7 @@ public class ReadData {
                 target = targetAux(content.get(contentLenght-1));
             }
 
-            list.add(new InputNeuron(input, target));
+            list.add(new Neuron(input, target));
 
         }
 

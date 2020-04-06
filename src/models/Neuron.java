@@ -3,15 +3,15 @@ package models;
 import java.util.ArrayList;
 import java.util.List;
 
-public class InputNeuron {
+public class Neuron {
 
     private int value;
     private List<Integer> target = new ArrayList<>(); //resultado esperado
     private List<Integer> input = new ArrayList<>(); //neuronios de entrada
 
-    public InputNeuron() {}
+    public Neuron() {}
 
-    public InputNeuron(List<Integer> input, List<Integer> target) {
+    public Neuron(List<Integer> input, List<Integer> target) {
         this.input = input;
         this.target = target;
     }
