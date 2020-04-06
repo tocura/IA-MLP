@@ -105,6 +105,18 @@ public class Matrix {
         return result;
     }
 
+    public static Matrix transpose(Matrix m) {
+        Matrix result = new Matrix(m.getCols(), m.getRows());
+
+        for(int i = 0; i < m.getRows(); i++) {
+            for(int j = 0; j < m.getCols(); j++) {
+                result.setValueMatrix(m.getValueMatrix(i,j), j, i);
+            }
+        }
+
+        return result;
+    }
+
     public void printMatrix() {
 
         for(int i = 0; i < this.rows; i++) {

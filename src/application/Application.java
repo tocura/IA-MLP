@@ -60,7 +60,11 @@ public class Application {
         Matrix c = Matrix.multiplyMatrix(m, n);
         c.printMatrix();
 
+        System.out.println("---------------------");
 
+        Matrix d = Matrix.transpose(c);
+        d.printMatrix();
+        c.printMatrix();
     }
 
 }
