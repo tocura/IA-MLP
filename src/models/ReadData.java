@@ -24,7 +24,7 @@ public class ReadData {
         BufferedReader reader = new BufferedReader(new FileReader(path + fileName));
 
         while((line = reader.readLine()) != null) {
-            List<Integer> input = new ArrayList<>();
+            List<Double> input = new ArrayList<>();
             List<Integer> target = new ArrayList<>();
 
             List<String> content = Arrays.asList(line.split(","));
@@ -39,9 +39,9 @@ public class ReadData {
 
                 if (content.get(i).length() > 2) {
                     String str = content.get(i).substring(1);
-                    input.add(Integer.parseInt(str));
+                    input.add(Double.parseDouble(str));
                 } else {
-                    input.add(Integer.parseInt(content.get(i)));
+                    input.add(Double.parseDouble(content.get(i)));
                 }
 
             }

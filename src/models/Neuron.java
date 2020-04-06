@@ -7,11 +7,11 @@ public class Neuron {
 
     private int value;
     private List<Integer> target = new ArrayList<>(); //resultado esperado
-    private List<Integer> input = new ArrayList<>(); //neuronios de entrada
+    private List<Double> input = new ArrayList<>(); //neuronios de entrada
 
     public Neuron() {}
 
-    public Neuron(List<Integer> input, List<Integer> target) {
+    public Neuron(List<Double> input, List<Integer> target) {
         this.input = input;
         this.target = target;
     }
@@ -24,7 +24,7 @@ public class Neuron {
         this.value = value;
     }
 
-    public List<Integer> getInput() {
+    public List<Double> getInput() {
         return this.input;
     }
 
