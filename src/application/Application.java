@@ -31,7 +31,7 @@ public class Application {
         //teste
         System.out.println(input.toString());
 
-        Matrix m = new Matrix(2,3);
+        Matrix m = Matrix.fromArray(input.get(0).getInput());
         m.printMatrix();
 
     }
