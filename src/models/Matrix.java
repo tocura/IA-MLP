@@ -6,14 +6,14 @@ public class Matrix {
 
     private int rows;
     private int cols;
-    private double[][] matrix;
+    private double[][] data;
 
     public Matrix() {}
 
     public Matrix(int rows, int cols) {
         this.rows = rows;
         this.cols = cols;
-        this.matrix = new double[rows][cols];
+        this.data = new double[rows][cols];
         randomize();
     }
 
@@ -34,17 +34,17 @@ public class Matrix {
     }
 
     public double getValueMatrix(int row, int col) {
-        return this.matrix[row][col];
+        return this.data[row][col];
     }
 
     public void setValueMatrix(double value, int row, int col) {
-        this.matrix[row][col] = value;
+        this.data[row][col] = value;
     }
 
     public void randomize() {
         for(int i = 0; i < this.rows; i++) {
             for(int j = 0; j < this.cols; j++) {
-                this.matrix[i][j] = Math.round(Math.random()*10);
+                this.setValueMatrix(Math.round(Math.random()*10), i, j);
             }
         }
     }
@@ -121,7 +121,7 @@ public class Matrix {
 
         for(int i = 0; i < this.rows; i++) {
             for(int j = 0; j < this.cols; j++) {
-                System.out.print(this.matrix[i][j] + "\t");
+                System.out.print(this.getValueMatrix(i,j) + "\t");
             }
             System.out.println();
         }

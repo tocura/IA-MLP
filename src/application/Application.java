@@ -65,6 +65,7 @@ public class Application {
         Matrix d = Matrix.transpose(c);
         d.printMatrix();
         c.printMatrix();
+
     }
 
 }
