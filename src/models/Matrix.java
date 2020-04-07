@@ -1,6 +1,7 @@
 package models;
 
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Matrix {
@@ -127,6 +128,19 @@ public class Matrix {
         }
 
         return m;
+    }
+
+    public List<Double> toArray() {
+
+        List<Double> result = new ArrayList<>();
+
+        for(int i = 0; i < this.rows; i++) {
+            for(int j = 0; j < this.cols; j++) {
+                result.add(this.getValueMatrix(i, j));
+            }
+        }
+
+        return result;
     }
 
     public void printMatrix() {

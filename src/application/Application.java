@@ -1,6 +1,7 @@
 package application;
 
 import models.Matrix;
+import models.NeuralNetwork;
 import models.Neuron;
 import models.ReadData;
 
@@ -31,9 +32,12 @@ public class Application {
         //teste
         System.out.println(input.toString());
 
-        Matrix m = Matrix.fromArray(input.get(0).getInput());
-        m.printMatrix();
+        System.out.println("---------------------");
 
+        NeuralNetwork neural = new NeuralNetwork(input.get(0).getInput(), input.get(0).getTarget());
+        List<Double> output = neural.feedforward(input.get(0).getInput());
+
+        System.out.println(output.toString());
     }
 
 }
