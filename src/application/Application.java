@@ -34,38 +34,6 @@ public class Application {
         Matrix m = new Matrix(2,3);
         m.printMatrix();
 
-        System.out.println("---------------------");
-
-        Matrix.addScalar(m, 1);
-        m.printMatrix();
-
-        System.out.println("---------------------");
-
-        Matrix.multiplyScalar(m, 2);
-        m.printMatrix();
-
-        System.out.println("---------------------");
-
-        Matrix n = new Matrix(3,2);
-        n.printMatrix();
-
-        System.out.println("---------------------");
-
-        Matrix.addMatrix(m, n);
-        m.printMatrix();
-        n.printMatrix();
-
-        System.out.println("---------------------");
-
-        Matrix c = Matrix.multiplyMatrix(m, n);
-        c.printMatrix();
-
-        System.out.println("---------------------");
-
-        Matrix d = Matrix.transpose(c);
-        d.printMatrix();
-        c.printMatrix();
-
     }
 
 }

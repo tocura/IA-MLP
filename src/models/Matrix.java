@@ -14,7 +14,7 @@ public class Matrix {
         this.rows = rows;
         this.cols = cols;
         this.data = new double[rows][cols];
-        randomize();
+        this.randomize();
     }
 
     public int getRows() {
@@ -44,7 +44,7 @@ public class Matrix {
     public void randomize() {
         for(int i = 0; i < this.rows; i++) {
             for(int j = 0; j < this.cols; j++) {
-                this.setValueMatrix(Math.round(Math.random()*10), i, j);
+                this.setValueMatrix(Math.random()*2 - 1, i, j);
             }
         }
     }
