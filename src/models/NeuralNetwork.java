@@ -7,7 +7,7 @@ public class NeuralNetwork {
     private List<Double> input_Neuron;
     private double[] hidden_Neuron;
     private int[] output_Neuron;
-    private List<Integer> target;
+    private List<Double> target;
     private Matrix weights_ih; //pesos entre a input layer e hidden layer
     private Matrix weights_ho; //pesos entre a hidden layer e output layer
     private Matrix bias_h; //bias dos hidden nodes
@@ -15,7 +15,7 @@ public class NeuralNetwork {
 
     public NeuralNetwork() {}
 
-    public NeuralNetwork(List<Double> input_Neuron, List<Integer> target) {
+    public NeuralNetwork(List<Double> input_Neuron, List<Double> target) {
 
         this.input_Neuron = input_Neuron;
         this.target = target;
@@ -68,6 +68,18 @@ public class NeuralNetwork {
         NeuralNetwork.activationFunction(output);
 
         return output.toArray();
+    }
+
+    public void train(List<Double> input, List<Double> target) {
+
+        List<Double> outputs = feedforward(input);
+
+        Matrix output = Matrix.fromArray(outputs);
+        Matrix targets = Matrix.fromArray(target);
+
+        Matrix error = Matrix.subtractMatrix(targets, output);
+
+
     }
 
 }

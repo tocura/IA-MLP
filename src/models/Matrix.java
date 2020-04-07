@@ -67,12 +67,28 @@ public class Matrix {
         if(m.getRows() == n.getRows() && m.getCols() == n.getCols()) {
             for(int i = 0; i < m.getRows(); i++) {
                 for(int j = 0; j < m.getCols(); j++) {
-                    double sum = m.getValueMatrix(i,j) * n.getValueMatrix(i,j);
+                    double sum = m.getValueMatrix(i,j) + n.getValueMatrix(i,j);
                     m.setValueMatrix(sum, i, j);
                 }
             }
         }
 
+    }
+
+    public static Matrix subtractMatrix(Matrix m, Matrix n) {
+
+        Matrix result = new Matrix(m.getRows(), m.getCols());
+
+        if(m.getRows() == n.getRows() && m.getCols() == n.getCols()) {
+            for(int i = 0; i < m.getRows(); i++) {
+                for(int j = 0; j < m.getCols(); j++) {
+                    double sub = m.getValueMatrix(i,j) - n.getValueMatrix(i,j);
+                    result.setValueMatrix(sub, i, j);
+                }
+            }
+        }
+
+        return result;
     }
 
     public static void multiplyScalar(Matrix m, double n) {

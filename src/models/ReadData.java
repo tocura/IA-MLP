@@ -25,7 +25,7 @@ public class ReadData {
 
         while((line = reader.readLine()) != null) {
             List<Double> input = new ArrayList<>();
-            List<Integer> target = new ArrayList<>();
+            List<Double> target = new ArrayList<>();
 
             List<String> content = Arrays.asList(line.split(","));
             int contentLenght = content.size();
@@ -54,7 +54,7 @@ public class ReadData {
             1000000, significa que a rede neural induziu que aquela entrada representa o caracter "A" e assim por diante.
              */
             if(content.get(contentLenght-1).contains("1") || content.get(contentLenght-1).contains("-1") || content.get(contentLenght-1).contains("0")) {
-                target.add(Integer.parseInt(content.get(contentLenght-1)));
+                target.add(Double.parseDouble(content.get(contentLenght-1)));
             }
             else {
                 target = targetAux(content.get(contentLenght-1));
@@ -73,16 +73,16 @@ public class ReadData {
     Metodo auxiliar para definir o valor do target visto que nao seria possivel o nosso neuronio de saida
     devolver um char
      */
-    private List<Integer> targetAux(String content) {
-        Integer[] a = {1,0,0,0,0,0,0};
-        Integer[] b = {0,1,0,0,0,0,0};
-        Integer[] c = {0,0,1,0,0,0,0};
-        Integer[] d = {0,0,0,1,0,0,0};
-        Integer[] e = {0,0,0,0,1,0,0};
-        Integer[] j = {0,0,0,0,0,1,0};
-        Integer[] k = {0,0,0,0,0,0,1};
+    private List<Double> targetAux(String content) {
+        Double[] a = {1.0,0.0,0.0,0.0,0.0,0.0,0.0};
+        Double[] b = {0.0,1.0,0.0,0.0,0.0,0.0,0.0};
+        Double[] c = {0.0,0.0,1.0,0.0,0.0,0.0,0.0};
+        Double[] d = {0.0,0.0,0.0,1.0,0.0,0.0,0.0};
+        Double[] e = {0.0,0.0,0.0,0.0,1.0,0.0,0.0};
+        Double[] j = {0.0,0.0,0.0,0.0,0.0,1.0,0.0};
+        Double[] k = {0.0,0.0,0.0,0.0,0.0,0.0,1.0};
 
-        List<Integer> tAux = new ArrayList<>();
+        List<Double> tAux = new ArrayList<>();
 
         switch(content) {
 

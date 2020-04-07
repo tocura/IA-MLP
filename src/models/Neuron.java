@@ -6,12 +6,12 @@ import java.util.List;
 public class Neuron {
 
     private int value;
-    private List<Integer> target = new ArrayList<>(); //resultado esperado
+    private List<Double> target = new ArrayList<>(); //resultado esperado
     private List<Double> input = new ArrayList<>(); //neuronios de entrada
 
     public Neuron() {}
 
-    public Neuron(List<Double> input, List<Integer> target) {
+    public Neuron(List<Double> input, List<Double> target) {
         this.input = input;
         this.target = target;
     }
@@ -28,7 +28,7 @@ public class Neuron {
         return this.input;
     }
 
-    public List<Integer> getTarget() {
+    public List<Double> getTarget() {
         return this.target;
     }
 
