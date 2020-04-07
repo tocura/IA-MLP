@@ -70,16 +70,32 @@ public class NeuralNetwork {
         return output.toArray();
     }
 
+    //metodo que faz o backpropagation dos erros
     public void train(List<Double> input, List<Double> target) {
-
+        //realiza o feedforward
         List<Double> outputs = feedforward(input);
 
+        //transforma as listas em matrizes
         Matrix output = Matrix.fromArray(outputs);
         Matrix targets = Matrix.fromArray(target);
 
-        Matrix error = Matrix.subtractMatrix(targets, output);
+        //calculo do erro do output
+        // erro = target - output
+        Matrix output_errors = Matrix.subtractMatrix(targets, output);
 
+        //matriz transposta dos pesos entre a hidden layer e a output layer
+        Matrix weight_ho_trans = Matrix.transpose(this.weights_ho);
+        //calculo do erro da hidden layer
+        Matrix hidden_errors = Matrix.multiplyMatrix(weight_ho_trans, output_errors);
 
+        System.out.println("----OUTPUT----");
+        output.printMatrix();
+        System.out.println("----TARGET----");
+        targets.printMatrix();
+        System.out.println("----ERROR-OUTPUT----");
+        output_errors.printMatrix();
+        System.out.println("----HIDDEN-ERROR----");
+        hidden_errors.printMatrix();
     }
 
 }

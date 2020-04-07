@@ -35,9 +35,9 @@ public class Application {
         System.out.println("---------------------");
 
         NeuralNetwork neural = new NeuralNetwork(input.get(0).getInput(), input.get(0).getTarget());
-        List<Double> output = neural.feedforward(input.get(0).getInput());
+        neural.train(input.get(0).getInput(), input.get(0).getTarget());
 
-        System.out.println(output.toString());
+        //System.out.println(output.toString());
     }
 
 }
