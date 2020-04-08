@@ -48,9 +48,9 @@ public class Application {
 
         }
 
-        //escrita dos arquivos com os bias iniciais
-        write.writeWeight(neural.getBias_h(), 'h', 'a');
-        write.writeWeight(neural.getBias_o(), 'o', 'a');
+        //escrita dos arquivos com os bias finais
+        write.writeBias(neural.getBias_h(), 'h', 'a');
+        write.writeBias(neural.getBias_o(), 'o', 'a');
 
         //escrita dos arquivos com os valors dos pesos finais
         write.writeWeight(neural.getWeights_ih(), 'h', 'a');

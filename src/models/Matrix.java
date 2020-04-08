@@ -15,7 +15,6 @@ public class Matrix {
         this.rows = rows;
         this.cols = cols;
         this.data = new double[rows][cols];
-        this.randomize();
     }
 
     public int getRows() {
@@ -43,10 +42,10 @@ public class Matrix {
     }
 
     //gera valores aleatorios de -1 a 1
-    public void randomize() {
-        for(int i = 0; i < this.rows; i++) {
-            for(int j = 0; j < this.cols; j++) {
-                this.setValueMatrix(Math.random()*2 - 1, i, j);
+    public static void randomize(Matrix m) {
+        for(int i = 0; i < m.getRows(); i++) {
+            for(int j = 0; j < m.getCols(); j++) {
+                m.setValueMatrix(Math.random()*2 - 1, i, j);
             }
         }
     }
@@ -109,6 +108,26 @@ public class Matrix {
                         sum += m.getValueMatrix(i,k) * n.getValueMatrix(k,j);
                     }
                     result.setValueMatrix(sum,i,j);
+                }
+            }
+        }
+
+        return result;
+    }
+
+    /*
+    metodo que realiza multiplicacao de matrizes por seus elementos, tambem conhecido como Hadamard Product
+    https://en.wikipedia.org/wiki/Hadamard_product_(matrices)
+     */
+    public static Matrix multiplyElementWise(Matrix m, Matrix n) {
+
+        Matrix result = new Matrix(m.getRows(), m.getCols());
+
+        if(m.getRows() == n.getRows() && m.getCols() == n.getCols()) {
+            for(int i = 0; i < m.getRows(); i++) {
+                for(int j = 0; j < m.getCols(); j++) {
+                    double prod = m.getValueMatrix(i,j) * n.getValueMatrix(i,j);
+                    result.setValueMatrix(prod, i, j);
                 }
             }
         }

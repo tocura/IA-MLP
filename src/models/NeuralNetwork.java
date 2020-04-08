@@ -20,19 +20,27 @@ public class NeuralNetwork {
         weights_ih = new Matrix(size_hidden, size_input);
         weights_ho = new Matrix(size_target, size_hidden);
 
+        //inicializa as matrizes de pesos
+        Matrix.randomize(weights_ih);
+        Matrix.randomize(weights_ho);
+
         //cria os bias
         bias_h = new Matrix(size_hidden, 1);
         bias_o = new Matrix(size_target, 1);
 
-        //inicializa a taxa de aprendizado
-        learning_rate = 0.1;
+        //inicializ os bias
+        Matrix.randomize(bias_h);
+        Matrix.randomize(bias_o);
 
         //inicializa o write
         write = new WriteData();
 
+        //inicializa o learning rate
+        this.learning_rate = 0.1;
+
         //escrita dos arquivos com os valores iniciais dos bias
         write.writeBias(bias_h, 'h', 'b');
-        write.writeBias(bias_h, 'o', 'b');
+        write.writeBias(bias_o, 'o', 'b');
 
         //escrita dos arquivos com os valores iniciais dos pesos
         write.writeWeight(weights_ih, 'h', 'b');
@@ -52,6 +60,10 @@ public class NeuralNetwork {
     }
 
     public Matrix getBias_o() { return this.bias_o; }
+
+    public double getLearning_rate() { return this.learning_rate; }
+
+    public void setLearning_rate(double learning_rate) { this.learning_rate = learning_rate; }
 
     //funcao de ativacao sigmoide f(x) = 1 / (1 + exp(-x))
     public static void activationFunction(Matrix m) {
@@ -117,7 +129,7 @@ public class NeuralNetwork {
     /*
     Metodo que faz o Feedforward, e, logo apos, o Brackpropagation
      */
-    public void train(List<Double> input, List<Double> target) {
+    public void train(List<Double> input, List<Double> target) throws IOException {
         /*********        FEEDFORWARD         ************/
 
         /*
@@ -159,7 +171,7 @@ public class NeuralNetwork {
         /*        Calculo do gradiente do output         */
         //output_gradient_aux = learning_rate * Erro * f'(x)
         Matrix output_gradient = NeuralNetwork.gradientFunction(output);
-        Matrix output_gradient_aux = Matrix.multiplyMatrix(output_gradient, output_errors);
+        Matrix output_gradient_aux = Matrix.multiplyElementWise(output_gradient, output_errors);
         Matrix.multiplyScalar(output_gradient_aux, this.learning_rate);
 
         /*        Calculo dos deltas do hidden->output layer         */
@@ -181,7 +193,7 @@ public class NeuralNetwork {
         /*        Calculo do gradiente do hidden layer         */
         //hidden_gradient_aux = learning_rate * Erro * f'(x)
         Matrix hidden_gradient = NeuralNetwork.gradientFunction(hidden);
-        Matrix hidden_gradient_aux = Matrix.multiplyMatrix(hidden_gradient, hidden_errors);
+        Matrix hidden_gradient_aux = Matrix.multiplyElementWise(hidden_gradient, hidden_errors);
         Matrix.multiplyScalar(hidden_gradient_aux, this.learning_rate);
 
         /*        Calculo dos deltas do input->hidden layer         */

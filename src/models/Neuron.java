@@ -32,7 +32,8 @@ public class Neuron {
         return this.target;
     }
 
+    @Override
     public String toString() {
-        return "{input: " + input.toString() + "}, {target: " + target.toString() + "}\n";
+        return "{input: " + input.toString() + ", target: " + target.toString() + "}\n";
     }
 }
