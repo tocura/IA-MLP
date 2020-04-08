@@ -3,6 +3,7 @@ package application;
 import models.NeuralNetwork;
 import models.Neuron;
 import models.ReadData;
+import models.WriteData;
 
 import java.io.IOException;
 import java.util.List;
@@ -28,6 +29,12 @@ public class Application {
         //lista de neuronios de entrada
         List<Neuron> input = read.readDataFile(fileName);
 
+        //escrita dos dados nos arquivos
+        WriteData write = new WriteData();
+
+        //escreve os inputs no txt
+        write.writeInput(input);
+
         //inicializa a rede neural com o tamanho do input e target e com a escolha de quantos nos tera a hidden layer
         //como os inputs e os targets terao o mesmo tamanho tamnho podemos inicializar o contrutor da forma abaixo
         NeuralNetwork neural = new NeuralNetwork(input.get(0).getInput().size(), input.get(0).getTarget().size(), 35);
@@ -41,11 +48,17 @@ public class Application {
 
         }
 
-        //lista que ira mostrar os resultados da rede neural
-        List<Double> result;
+        //escrita dos arquivos com os bias iniciais
+        write.writeWeight(neural.getBias_h(), 'h', 'a');
+        write.writeWeight(neural.getBias_o(), 'o', 'a');
+
+        //escrita dos arquivos com os valors dos pesos finais
+        write.writeWeight(neural.getWeights_ih(), 'h', 'a');
+        write.writeWeight(neural.getWeights_ho(), 'o', 'a');
+
+        //rodar o teste para a rede neural
         for(Neuron n : input) {
-            result = neural.test(n.getInput());
-            System.out.println(result.toString());
+            neural.test(n.getInput());
         }
 
     }

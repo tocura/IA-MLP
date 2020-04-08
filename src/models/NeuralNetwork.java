@@ -1,5 +1,6 @@
 package models;
 
+import java.io.IOException;
 import java.util.List;
 
 public class NeuralNetwork {
@@ -10,9 +11,11 @@ public class NeuralNetwork {
     private Matrix bias_o; //bias dos output node
     private double learning_rate; //taxa de aprendizado
 
+    private WriteData write;
+
     public NeuralNetwork() {}
 
-    public NeuralNetwork(int size_input, int size_target, int size_hidden) {
+    public NeuralNetwork(int size_input, int size_target, int size_hidden) throws IOException {
         //cria as matrizes de pesos
         weights_ih = new Matrix(size_hidden, size_input);
         weights_ho = new Matrix(size_target, size_hidden);
@@ -23,7 +26,32 @@ public class NeuralNetwork {
 
         //inicializa a taxa de aprendizado
         learning_rate = 0.1;
+
+        //inicializa o write
+        write = new WriteData();
+
+        //escrita dos arquivos com os valores iniciais dos bias
+        write.writeBias(bias_h, 'h', 'b');
+        write.writeBias(bias_h, 'o', 'b');
+
+        //escrita dos arquivos com os valores iniciais dos pesos
+        write.writeWeight(weights_ih, 'h', 'b');
+        write.writeWeight(weights_ho, 'o', 'b');
     }
+
+    public Matrix getWeights_ih() {
+        return this.weights_ih;
+    }
+
+    public Matrix getWeights_ho() {
+        return this.weights_ho;
+    }
+
+    public Matrix getBias_h() {
+        return this.bias_h;
+    }
+
+    public Matrix getBias_o() { return this.bias_o; }
 
     //funcao de ativacao sigmoide f(x) = 1 / (1 + exp(-x))
     public static void activationFunction(Matrix m) {
@@ -58,7 +86,7 @@ public class NeuralNetwork {
     /*
     Metodo que serve para os testes depois de treinar a rede neural
      */
-    public List<Double> test(List<Double> input) {
+    public void test(List<Double> input) throws IOException {
         /*
         transforma a lista de inputs em uma matriz de inputs.
         sempre sera uma matriz com uma unica coluna
@@ -83,7 +111,7 @@ public class NeuralNetwork {
         Matrix.addMatrix(output, this.bias_o);
         NeuralNetwork.activationFunction(output);
 
-        return output.toArray();
+        write.writeOutput(output.toArray());
     }
 
     /*

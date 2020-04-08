@@ -156,14 +156,18 @@ public class Matrix {
     }
 
     //metodo de para printar a Matriz
-    public void printMatrix() {
+    public String printMatrix() {
+
+        StringBuffer str = new StringBuffer();
 
         for(int i = 0; i < this.rows; i++) {
             for(int j = 0; j < this.cols; j++) {
-                System.out.print(this.getValueMatrix(i,j) + "\t");
+                str.append(this.getValueMatrix(i,j) + "\t");
             }
-            System.out.println();
+            str.append("\n");
         }
+
+        return str.toString();
 
     }
 
