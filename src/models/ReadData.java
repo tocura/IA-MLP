@@ -101,7 +101,7 @@ public class ReadData {
             case "E":
                 tAux= Arrays.asList(e);
                 break;
-            case " ":
+            case "J":
                 tAux = Arrays.asList(j);
                 break;
             case "K":

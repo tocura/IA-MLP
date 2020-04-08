@@ -29,15 +29,32 @@ public class Application {
         //lista de neuronios de entrada
         List<Neuron> input = read.readDataFile(fileName);
 
-        //teste
         System.out.println(input.toString());
 
-        System.out.println("---------------------");
+        System.out.println("--------------------");
 
-        NeuralNetwork neural = new NeuralNetwork(input.get(0).getInput(), input.get(0).getTarget());
-        neural.train(input.get(0).getInput(), input.get(0).getTarget());
+        //inicializa a rede neural com o primeiro input e target
+        NeuralNetwork neural = new NeuralNetwork(input.get(0).getInput().size(), input.get(0).getTarget().size(), 35);
 
-        //System.out.println(output.toString());
+
+        //rodara 50000 epocas
+        for(int i = 0; i < 50000; i++) {
+
+            for(Neuron n : input) {
+                neural.train(n.getInput(), n.getTarget());
+            }
+
+        }
+
+
+
+        //lista que ira mostrar os resultados
+        List<Double> result;
+        for(Neuron n : input) {
+            result = neural.feedforward(n.getInput());
+            System.out.println(result.toString());
+        }
+
     }
 
 }
