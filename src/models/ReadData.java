@@ -1,6 +1,7 @@
 package models;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -10,7 +11,8 @@ import java.util.List;
 
 public class ReadData {
 
-    private String path = "src/data/";
+    private String pathInput = "src/data/";
+    private String pathOutput = "src/output_files/";
 
     /*
     Metodo para ler os dados dos arquivos de entrada
@@ -21,7 +23,7 @@ public class ReadData {
 
         List<Neuron> list = new ArrayList<>();
 
-        BufferedReader reader = new BufferedReader(new FileReader(path + fileName));
+        BufferedReader reader = new BufferedReader(new FileReader(pathInput + fileName));
 
         //loop para percorrer todas as linhas do arquivo
         while((line = reader.readLine()) != null) {
@@ -111,6 +113,30 @@ public class ReadData {
         }
 
         return tAux;
+    }
+
+    /*
+    metodo para ler os arquivos de saida que serao posteriormente usados para
+    o teste com o arquivo de caracteres-ruido.csv
+     */
+    public List<Double> readOutputFile(String fileName) throws IOException {
+
+        String line = "";
+
+        BufferedReader reader = new BufferedReader(new FileReader(pathOutput + fileName));
+
+        List<Double> data = new ArrayList<>();
+
+        while((line = reader.readLine()) != null) {
+            List<String> content = Arrays.asList(line.split(","));
+
+            for(int i = 0; i < content.size(); i++) {
+                data.add(Double.parseDouble(content.get(i)));
+            }
+
+        }
+
+        return data;
     }
 
 }

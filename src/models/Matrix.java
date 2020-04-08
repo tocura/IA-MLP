@@ -181,7 +181,7 @@ public class Matrix {
 
         for(int i = 0; i < this.rows; i++) {
             for(int j = 0; j < this.cols; j++) {
-                str.append(this.getValueMatrix(i,j) + "\t");
+                str.append(this.getValueMatrix(i,j) + ",");
             }
             str.append("\n");
         }

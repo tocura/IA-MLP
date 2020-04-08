@@ -80,8 +80,6 @@ public class WriteData {
             }
         }
 
-
-
     }
 
     public void writeOutput(List<Double> output) throws IOException {

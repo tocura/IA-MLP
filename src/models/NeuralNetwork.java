@@ -61,10 +61,6 @@ public class NeuralNetwork {
 
     public Matrix getBias_o() { return this.bias_o; }
 
-    public double getLearning_rate() { return this.learning_rate; }
-
-    public void setLearning_rate(double learning_rate) { this.learning_rate = learning_rate; }
-
     //funcao de ativacao sigmoide f(x) = 1 / (1 + exp(-x))
     public static void activationFunction(Matrix m) {
         /*
