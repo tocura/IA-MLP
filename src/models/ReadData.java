@@ -131,7 +131,9 @@ public class ReadData {
             List<String> content = Arrays.asList(line.split(","));
 
             for(int i = 0; i < content.size(); i++) {
-                data.add(Double.parseDouble(content.get(i)));
+                if(!content.get(i).isEmpty()) {
+                    data.add(Double.parseDouble(content.get(i)));
+                }
             }
 
         }
