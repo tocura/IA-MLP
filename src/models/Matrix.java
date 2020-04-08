@@ -1,9 +1,7 @@
 package models;
 
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class Matrix {
 
@@ -44,6 +42,7 @@ public class Matrix {
         this.data[row][col] = value;
     }
 
+    //gera valores aleatorios de -1 a 1
     public void randomize() {
         for(int i = 0; i < this.rows; i++) {
             for(int j = 0; j < this.cols; j++) {
@@ -52,17 +51,7 @@ public class Matrix {
         }
     }
 
-    public static void addScalar(Matrix m, double n) {
-
-        for(int i = 0; i < m.getRows(); i++) {
-            for(int j = 0; j < m.getCols(); j++) {
-                double sum = m.getValueMatrix(i,j) + n;
-                m.setValueMatrix(sum, i, j);
-            }
-        }
-
-    }
-
+    //adicao de matriz
     public static void addMatrix(Matrix m, Matrix n) {
 
         if(m.getRows() == n.getRows() && m.getCols() == n.getCols()) {
@@ -76,6 +65,7 @@ public class Matrix {
 
     }
 
+    //subtracao de matriz
     public static Matrix subtractMatrix(Matrix m, Matrix n) {
 
         Matrix result = new Matrix(m.getRows(), m.getCols());
@@ -92,6 +82,7 @@ public class Matrix {
         return result;
     }
 
+    //multiplicacao de uma matriz por um valor
     public static void multiplyScalar(Matrix m, double n) {
 
         for(int i = 0; i < m.getRows(); i++) {
@@ -103,6 +94,7 @@ public class Matrix {
 
     }
 
+    //multiplicacao de matrizes
     public static Matrix multiplyMatrix(Matrix m, Matrix n) {
 
         Matrix result = new Matrix();
@@ -124,6 +116,7 @@ public class Matrix {
         return result;
     }
 
+    //metodo para transpor uma matriz
     public static Matrix transpose(Matrix m) {
         Matrix result = new Matrix(m.getCols(), m.getRows());
 
@@ -136,6 +129,7 @@ public class Matrix {
         return result;
     }
 
+    //transforma uma List<Double> em uma matriz
     public static Matrix fromArray(List<Double> arr) {
 
         Matrix m = new Matrix(arr.size(), 1);
@@ -147,6 +141,7 @@ public class Matrix {
         return m;
     }
 
+    //transforma uma matriz em um List<Double>
     public List<Double> toArray() {
 
         List<Double> result = new ArrayList<>();
@@ -160,6 +155,7 @@ public class Matrix {
         return result;
     }
 
+    //metodo de para printar a Matriz
     public void printMatrix() {
 
         for(int i = 0; i < this.rows; i++) {

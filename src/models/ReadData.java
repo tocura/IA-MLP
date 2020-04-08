@@ -23,6 +23,7 @@ public class ReadData {
 
         BufferedReader reader = new BufferedReader(new FileReader(path + fileName));
 
+        //loop para percorrer todas as linhas do arquivo
         while((line = reader.readLine()) != null) {
             List<Double> input = new ArrayList<>();
             List<Double> target = new ArrayList<>();
@@ -53,7 +54,7 @@ public class ReadData {
             que dependendo de onde o neuronio 1 aparecer determinara o caracter, ou seja, se a saida for
             1000000, significa que a rede neural induziu que aquela entrada representa o caracter "A" e assim por diante.
              */
-            if(content.get(contentLenght-1).contains("1") || content.get(contentLenght-1).contains("-1") || content.get(contentLenght-1).contains("0")) {
+            if(content.get(contentLenght-1).contains("1") || content.get(contentLenght-1).contains("0")) {
                 target.add(Double.parseDouble(content.get(contentLenght-1)));
             }
             else {
