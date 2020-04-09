@@ -7,10 +7,8 @@ public class WriteData {
 
     private String path = "src/output_files/";
     private BufferedWriter writer;
-    private File f = new File(path + "InitialParam.txt");
-    private FileWriter fw = new FileWriter(f, true);
 
-    public WriteData() throws IOException {
+    public WriteData() {
     }
 
     public void writeBias(Matrix bias, char tipo, char momento) throws IOException {
@@ -107,18 +105,13 @@ public class WriteData {
 
     }
 
-    public void writeInitialParam(double learning_rate) {
+    public void writeInitialParam(int hidden_layer_size, double learning_rate) throws IOException {
 
-        PrintWriter printWriter = new PrintWriter(fw);
-        printWriter.println("Learning rate: " + learning_rate);
-        printWriter.close();
-
-    }
-
-    public void writeInitialParam(int hidden_layer_size) {
-
+        File f = new File(path + "InitialParam.txt");
+        FileWriter fw = new FileWriter(f);
         PrintWriter printWriter = new PrintWriter(fw);
         printWriter.println("Número de neurônios na camada escondida: " + hidden_layer_size);
+        printWriter.println("Learning rate: " + learning_rate);
         printWriter.close();
 
     }

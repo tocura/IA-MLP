@@ -60,8 +60,6 @@ public class Application {
         int sum = input_size + output_size;
         int hidden_size = ((sum)/2) + ((sum)%2);
 
-        write.writeInitialParam(hidden_size);
-
         /*
         Se o nome do arquivo for o caracteres-ruido.csv entao rodaremos a nossa rede neural
         com o valor obtido pelo treinamento com o arquivo caracteres-limpo.csv.
@@ -78,6 +76,8 @@ public class Application {
 
             NeuralNetwork neural = new NeuralNetwork();
 
+            write.writeInitialParam(hidden_size, neural.getLearning_rate());
+
             neural.setBias_h(bias_h);
             neural.setBias_o(bias_o);
             neural.setWeights_ih(weights_ih);
@@ -93,6 +93,8 @@ public class Application {
             //inicializa a rede neural com o tamanho do input e target e com a escolha de quantos nos tera a hidden layer
             //como os inputs e os targets terao o mesmo tamanho tamnho podemos inicializar o contrutor da forma abaixo
             NeuralNetwork neural = new NeuralNetwork(input_size, output_size, hidden_size);
+
+            write.writeInitialParam(hidden_size, neural.getLearning_rate());
 
             //rodara 50000 epocas
             for(int i = 0; i < 50000; i++) {

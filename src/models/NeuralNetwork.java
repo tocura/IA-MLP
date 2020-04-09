@@ -14,15 +14,13 @@ public class NeuralNetwork {
     private WriteData write;
 
     //este construtor sera usado somente para o teste com o arquivo com os caracteres ruidos
-    public NeuralNetwork() throws IOException {
+    public NeuralNetwork() {
 
         //inicializa o learning rate
         this.learning_rate = 0.1;
 
         //inicializa o write
         write = new WriteData();
-
-        write.writeInitialParam(learning_rate);
     }
 
     public NeuralNetwork(int size_input, int size_target, int size_hidden) throws IOException {
@@ -78,6 +76,8 @@ public class NeuralNetwork {
     public Matrix getBias_o() { return this.bias_o; }
 
     public void setBias_o(Matrix bias_o) { this.bias_o = bias_o; }
+
+    public double getLearning_rate() { return this.learning_rate; }
 
     //funcao de ativacao sigmoide f(x) = 1 / (1 + exp(-x))
     public static void activationFunction(Matrix m) {
