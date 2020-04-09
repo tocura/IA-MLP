@@ -3,6 +3,7 @@ package application;
 import models.*;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -75,6 +76,7 @@ public class Application {
             Matrix weights_ho = read.readOutputFile("Weight_hidden-output_after.txt", output_size, hidden_size);
 
             NeuralNetwork neural = new NeuralNetwork();
+            List<List<Double>> outputs = new ArrayList<>();
 
             write.writeInitialParam(hidden_size, neural.getLearning_rate());
 
@@ -85,7 +87,11 @@ public class Application {
 
             //rodar o teste para a rede neural
             for(Neuron n : input) {
-                neural.test(n.getInput(), fname);
+                outputs.add(neural.test(n.getInput(), fname));
+            }
+
+            for(List<Double> l : outputs) {
+                write.writeOutput(l, fname);
             }
 
         }
@@ -93,6 +99,8 @@ public class Application {
             //inicializa a rede neural com o tamanho do input e target e com a escolha de quantos nos tera a hidden layer
             //como os inputs e os targets terao o mesmo tamanho tamnho podemos inicializar o contrutor da forma abaixo
             NeuralNetwork neural = new NeuralNetwork(input_size, output_size, hidden_size);
+
+            List<List<Double>> outputs = new ArrayList<>();
 
             write.writeInitialParam(hidden_size, neural.getLearning_rate());
 
@@ -115,7 +123,11 @@ public class Application {
 
             //rodar o teste para a rede neural
             for(Neuron n : input) {
-                neural.test(n.getInput(), fname);
+                outputs.add(neural.test(n.getInput(), fname));
+            }
+
+            for(List<Double> l : outputs) {
+                write.writeOutput(l, fname);
             }
         }
 

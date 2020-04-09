@@ -1,6 +1,7 @@
 package models;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class NeuralNetwork {
@@ -112,7 +113,7 @@ public class NeuralNetwork {
     /*
     Metodo que serve para os testes depois de treinar a rede neural
      */
-    public void test(List<Double> input, String fileName) throws IOException {
+    public List<Double> test(List<Double> input, String fileName) throws IOException {
         /*
         transforma a lista de inputs em uma matriz de inputs.
         sempre sera uma matriz com uma unica coluna
@@ -137,7 +138,20 @@ public class NeuralNetwork {
         Matrix.addMatrix(output, this.bias_o);
         NeuralNetwork.activationFunction(output);
 
+        /*
+        arredondamento dos outputs, para obte-los em 0 e 1
+         */
+        List<Double> aux = output.toArray();
+        List<Double> outputs = new ArrayList<>();
+
+        for(int i = 0; i < aux.size(); i++) {
+            outputs.add((double) Math.round(aux.get(i)));
+        }
+
+        //escrita dos outputs nos arquivos de saida
         write.writeOutput(output.toArray(), fileName);
+
+        return outputs;
     }
 
     /*
