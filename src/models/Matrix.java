@@ -160,6 +160,20 @@ public class Matrix {
         return m;
     }
 
+    //metodo para transformar uma lista em matriz, utilizado no teste com ruido
+    public void toMatrix(List<Double> list) {
+
+        int k = 0;
+
+        for(int i = 0; i < this.rows; i++) {
+            for(int j = 0; j < this.cols; j++) {
+                this.data[i][j] = list.get(k);
+                k++;
+            }
+        }
+
+    }
+
     //transforma uma matriz em um List<Double>
     public List<Double> toArray() {
 

@@ -119,13 +119,15 @@ public class ReadData {
     metodo para ler os arquivos de saida que serao posteriormente usados para
     o teste com o arquivo de caracteres-ruido.csv
      */
-    public List<Double> readOutputFile(String fileName) throws IOException {
+    public Matrix readOutputFile(String fileName, int rows, int cols) throws IOException {
 
         String line = "";
 
         BufferedReader reader = new BufferedReader(new FileReader(pathOutput + fileName));
 
         List<Double> data = new ArrayList<>();
+
+        Matrix m = new Matrix(rows, cols);
 
         while((line = reader.readLine()) != null) {
             List<String> content = Arrays.asList(line.split(","));
@@ -138,7 +140,9 @@ public class ReadData {
 
         }
 
-        return data;
+        m.toMatrix(data);
+
+        return m;
     }
 
 }

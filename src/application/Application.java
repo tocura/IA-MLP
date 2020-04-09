@@ -36,12 +36,15 @@ public class Application {
         formula para inicializar o numero de neuronios da hidden layer
         eh a (input + output)/2 arredondado para cima
          */
-        int sum = input.get(0).getInput().size() + input.get(0).getTarget().size();
-        int size_hidden = ((sum)/2) + ((sum)%2);
+        int input_size = input.get(0).getInput().size();
+        int output_size = input.get(0).getTarget().size();
+
+        int sum = input_size + output_size;
+        int hidden_size = ((sum)/2) + ((sum)%2);
 
         //inicializa a rede neural com o tamanho do input e target e com a escolha de quantos nos tera a hidden layer
         //como os inputs e os targets terao o mesmo tamanho tamnho podemos inicializar o contrutor da forma abaixo
-        NeuralNetwork neural = new NeuralNetwork(input.get(0).getInput().size(), input.get(0).getTarget().size(), size_hidden);
+        NeuralNetwork neural = new NeuralNetwork(input_size, output_size, hidden_size);
 
         /*
         Se o nome do arquivo for o caracteres-ruido.csv entao rodaremos a nossa rede neural
@@ -50,6 +53,14 @@ public class Application {
         pois seus resultados estarao gravados no arquivo de saida
          */
         if(fileName.equals("caracteres-ruido.csv")) {
+
+            //inicializa os bias e matrizes de peso com os resultados obtidos do treinamento com os caracteres limpos
+            Matrix bias_h = read.readOutputFile("Bias_hidden_layer_after.txt", hidden_size, 1);
+            Matrix bias_o = read.readOutputFile("Bias_output_layer_after.txt", output_size, 1);
+            Matrix weights_ih = read.readOutputFile("Weight_input-hidden_after.txt", hidden_size, input_size);
+            Matrix weights_ho = read.readOutputFile("Weight_hidden-output_after.txt", output_size, hidden_size);
+
+
 
         }
         else {

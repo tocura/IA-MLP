@@ -51,15 +51,23 @@ public class NeuralNetwork {
         return this.weights_ih;
     }
 
+    public void setWeights_ih(Matrix weights_ih) { this.weights_ih = weights_ih; }
+
     public Matrix getWeights_ho() {
         return this.weights_ho;
     }
+
+    public void setWeights_ho(Matrix weights_ho) { this.weights_ho = weights_ho; }
 
     public Matrix getBias_h() {
         return this.bias_h;
     }
 
+    public void setBias_h(Matrix bias_h) { this.bias_h = bias_h; }
+
     public Matrix getBias_o() { return this.bias_o; }
+
+    public void setBias_o(Matrix bias_o) { this.bias_o = bias_o; }
 
     //funcao de ativacao sigmoide f(x) = 1 / (1 + exp(-x))
     public static void activationFunction(Matrix m) {
