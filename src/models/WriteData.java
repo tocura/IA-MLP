@@ -82,9 +82,9 @@ public class WriteData {
 
     }
 
-    public void writeOutput(List<Double> output) throws IOException {
+    public void writeOutput(List<Double> output, String fileName) throws IOException {
 
-        File file = new File(path + "Output.txt");
+        File file = new File(path + fileName);
         FileWriter fWriter = new FileWriter(file, true);
         PrintWriter printWriter = new PrintWriter(fWriter);
         printWriter.println(output.toString() + "\n");

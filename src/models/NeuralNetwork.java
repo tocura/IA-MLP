@@ -13,7 +13,15 @@ public class NeuralNetwork {
 
     private WriteData write;
 
-    public NeuralNetwork() {}
+    //este construtor sera usado somente para o teste com o arquivo com os caracteres ruidos
+    public NeuralNetwork() {
+
+        //inicializa o learning rate
+        this.learning_rate = 0.1;
+
+        //inicializa o write
+        write = new WriteData();
+    }
 
     public NeuralNetwork(int size_input, int size_target, int size_hidden) throws IOException {
         //cria as matrizes de pesos
@@ -102,7 +110,7 @@ public class NeuralNetwork {
     /*
     Metodo que serve para os testes depois de treinar a rede neural
      */
-    public void test(List<Double> input) throws IOException {
+    public void test(List<Double> input, String fileName) throws IOException {
         /*
         transforma a lista de inputs em uma matriz de inputs.
         sempre sera uma matriz com uma unica coluna
@@ -127,7 +135,7 @@ public class NeuralNetwork {
         Matrix.addMatrix(output, this.bias_o);
         NeuralNetwork.activationFunction(output);
 
-        write.writeOutput(output.toArray());
+        write.writeOutput(output.toArray(), fileName);
     }
 
     /*

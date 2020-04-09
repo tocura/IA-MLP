@@ -32,6 +32,24 @@ public class Application {
         //escreve os inputs no txt
         write.writeInput(input);
 
+        String fname = "";
+
+        if(fileName.contains("AND")) {
+            fname = "Output_AND.txt";
+        }
+        else if(fileName.contains("mOR")) {
+            fname = "Output_OR.txt";
+        }
+        else if(fileName.contains("XOR")) {
+            fname = "Output_XOR.txt";
+        }
+        else if(fileName.contains("limpo")) {
+            fname = "Output_Caracteres_limpo.txt";
+        }
+        else if(fileName.contains("ruido")) {
+            fname = "Output_Caracteres_ruido.txt";
+        }
+
         /*
         formula para inicializar o numero de neuronios da hidden layer
         eh a (input + output)/2 arredondado para cima
@@ -41,10 +59,6 @@ public class Application {
 
         int sum = input_size + output_size;
         int hidden_size = ((sum)/2) + ((sum)%2);
-
-        //inicializa a rede neural com o tamanho do input e target e com a escolha de quantos nos tera a hidden layer
-        //como os inputs e os targets terao o mesmo tamanho tamnho podemos inicializar o contrutor da forma abaixo
-        NeuralNetwork neural = new NeuralNetwork(input_size, output_size, hidden_size);
 
         /*
         Se o nome do arquivo for o caracteres-ruido.csv entao rodaremos a nossa rede neural
@@ -60,10 +74,24 @@ public class Application {
             Matrix weights_ih = read.readOutputFile("Weight_input-hidden_after.txt", hidden_size, input_size);
             Matrix weights_ho = read.readOutputFile("Weight_hidden-output_after.txt", output_size, hidden_size);
 
+            NeuralNetwork neural = new NeuralNetwork();
 
+            neural.setBias_h(bias_h);
+            neural.setBias_o(bias_o);
+            neural.setWeights_ih(weights_ih);
+            neural.setWeights_ho(weights_ho);
+
+            //rodar o teste para a rede neural
+            for(Neuron n : input) {
+                neural.test(n.getInput(), fname);
+            }
 
         }
         else {
+            //inicializa a rede neural com o tamanho do input e target e com a escolha de quantos nos tera a hidden layer
+            //como os inputs e os targets terao o mesmo tamanho tamnho podemos inicializar o contrutor da forma abaixo
+            NeuralNetwork neural = new NeuralNetwork(input_size, output_size, hidden_size);
+
             //rodara 50000 epocas
             for(int i = 0; i < 50000; i++) {
 
@@ -83,7 +111,7 @@ public class Application {
 
             //rodar o teste para a rede neural
             for(Neuron n : input) {
-                neural.test(n.getInput());
+                neural.test(n.getInput(), fname);
             }
         }
 
