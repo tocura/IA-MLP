@@ -157,7 +157,7 @@ public class NeuralNetwork {
     /*
     Metodo que faz o Feedforward, e, logo apos, o Brackpropagation
      */
-    public void train(List<Double> input, List<Double> target) throws IOException {
+    public void train(List<Double> input, List<Double> target) {
         /*********        FEEDFORWARD         ************/
 
         /*

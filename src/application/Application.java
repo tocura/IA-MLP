@@ -54,6 +54,7 @@ public class Application {
         /*
         formula para inicializar o numero de neuronios da hidden layer
         eh a (input + output)/2 arredondado para cima
+        https://stats.stackexchange.com/questions/181/how-to-choose-the-number-of-hidden-layers-and-nodes-in-a-feedforward-neural-netw
          */
         int input_size = input.get(0).getInput().size();
         int output_size = input.get(0).getTarget().size();
