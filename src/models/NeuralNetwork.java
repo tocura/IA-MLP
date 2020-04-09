@@ -14,13 +14,15 @@ public class NeuralNetwork {
     private WriteData write;
 
     //este construtor sera usado somente para o teste com o arquivo com os caracteres ruidos
-    public NeuralNetwork() {
+    public NeuralNetwork() throws IOException {
 
         //inicializa o learning rate
         this.learning_rate = 0.1;
 
         //inicializa o write
         write = new WriteData();
+
+        write.writeInitialParam(learning_rate);
     }
 
     public NeuralNetwork(int size_input, int size_target, int size_hidden) throws IOException {

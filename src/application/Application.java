@@ -60,6 +60,8 @@ public class Application {
         int sum = input_size + output_size;
         int hidden_size = ((sum)/2) + ((sum)%2);
 
+        write.writeInitialParam(hidden_size);
+
         /*
         Se o nome do arquivo for o caracteres-ruido.csv entao rodaremos a nossa rede neural
         com o valor obtido pelo treinamento com o arquivo caracteres-limpo.csv.
